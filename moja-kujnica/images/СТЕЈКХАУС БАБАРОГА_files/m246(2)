@@ -1,0 +1,107 @@
+Fox = {};
+
+Fox.Strings = {
+	add: function (object)
+	{
+		jQuery.extend(this, object);
+		return this;
+	}
+};
+
+Fox.Options = {
+	// Fox.Options.add('key', {...});
+	add: function (key, data)
+	{
+		var o = {};
+		o[key] = data;
+		jQuery.extend(this, o);
+		return this;
+	},
+
+	// Return by copy: Fox.Options.get('key');
+	// Return by reference: Fox.Options['key'];
+	get: function (key)
+	{
+		return jQuery.extend({}, this[key]);
+	}
+};
+
+
+(function ()
+{
+	Fox.Strings.add(
+		{
+			JCANCEL: "Odustani",
+			COM_FOXCONTACT_BROWSE_FILES: "Otvori fajl",
+			COM_FOXCONTACT_FAILED: "Neuspešno",
+			COM_FOXCONTACT_SUCCESS: "Uspešno",
+			COM_FOXCONTACT_NO_RESULTS_MATCH: "No matching results found",
+			COM_FOXCONTACT_REMOVE_ALT: "Ukloni",
+			JURI_ROOT: ""
+		}
+	);
+
+	Date.monthNames = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
+	Date.dayNames = ["nedelja", "ponedeljak", "utorak", "sreda", "četvrtak", "petak", "subota"];
+	Date.monthNumbers = {
+		"januar": 0,
+		"februar": 1,
+		"mart": 2,
+		"april": 3,
+		"maj": 4,
+		"jun": 5,
+		"jul": 6,
+		"avgust": 7,
+		"septembar": 8,
+		"oktobar": 9,
+		"novembar": 10,
+		"decembar": 11
+	};
+
+	// Calendar default options
+	Fox.Options.add('calendar', {
+		dayOfWeekStart: JSON.parse("1"),
+		lang: 'dynamic',
+		i18n: {
+			dynamic: {
+				months: Date.monthNames,
+				dayOfWeek: ["ned", "pon", "uto", "sre", "čet", "pet", "sub"]
+			}
+		}
+	});
+
+})();
+
+
+jQuery(document).ready(function ($)
+{
+	$('.fox-item-captcha-img-reload').each(function ()
+	{
+		$(this).click(function ()
+		{
+			var image = document.getElementById($(this).attr("data-captcha-img"));
+
+			// Generates a unique id with an 8 digits fixed length
+			var uniqueid = Math.floor(Math.random() * Math.pow(10, 8)).toString();
+			while (uniqueid.length < 8)
+			{
+				uniqueid = '0' + uniqueid;
+			}
+
+			// Update the image src
+			image.src = image.src
+				.replace(/uniqueid=[0-9]{8}/, "uniqueid=" + uniqueid)  // non SEF case
+				.replace(/uniqueid\/[0-9]{8}/, "uniqueid/" + uniqueid) // SEF case
+			;
+		}).show();
+	});
+});
+
+
+/* Enable the following function if you want to enable autofocus to the first input of the first form in the page */
+/*
+ jQuery(document).ready(function ($)
+ {
+ $('.fox-form').find('input[type=text]').filter(':visible:first').focus();
+ });
+ */

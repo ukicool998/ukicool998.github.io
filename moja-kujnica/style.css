@@ -1,0 +1,219 @@
+/* Variables */
+:root {
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #eee;
+    margin: 30px 50px;
+    line-height: 1.5;
+}
+
+.btn {
+    color: var(--light);
+    background: var(--dark);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+}
+
+/* Makes img max width 100% of parent container */
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+}
+
+/* Hamburger display none */
+.display-none {
+    display: none;
+}
+
+/* Navigation */
+.main-nav ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+    grid-gap: 20px;
+    list-style-type: none;
+}
+
+.main-nav a {
+    background: var(--primary);
+    display: block;
+    text-decoration: none;
+    color: var(--dark);
+    padding: 0.9rem;
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    box-shadow: var(--shadow);
+}
+
+.main-nav a:hover {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.top-container {
+    display: grid;
+    grid-gap: 20px;
+}
+
+.showcase {
+    grid-area: 'showcase';
+    min-height: 400px;
+    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(images/photo1.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.showcase h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+    color: var(--light);
+}
+
+.showcase p {
+    font-size: 1.3rem;
+    margin-top: 0;
+    color: var(--light);
+}
+
+/* Usluge english-SERVICES*/
+.usluge {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+}
+
+.usluge a {
+    text-decoration: none;
+    color: #FF8C32;
+    font-weight: bold;
+}
+
+.usluge a:hover {
+    color: var(--dark);
+}
+
+.box {
+    background: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+}
+
+/* O nama english - ABOUT US*/
+
+.o-nama {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background:var(--primary);
+    box-shadow: var(--shadow);
+    grid-gap: 30px;
+    padding: 3rem;
+}
+
+/* Galerija english - Galery*/
+
+.galerija {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.galerija > img {
+    width: 200px;
+}
+
+.galerija > img:hover {
+    width: 250px;
+    transition: 1s;
+    margin-bottom: auto;
+}
+
+footer {
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 1rem;
+    line-height: 5;
+}
+
+footer a {
+    color: var(--light);
+}
+
+footer a:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.social-media {
+    margin: auto 5rem;
+}
+
+/* Responsive layout */
+
+@media(max-width:750px) {
+
+    
+    .showcase h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-nav ul {
+        grid-template-columns: 1fr;
+    }
+
+    .usluge {
+        grid-template-columns: 1fr;
+    }
+
+    .o-nama {
+        grid-template-columns: 1fr;
+    }
+
+    .o-nama .btn {
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+}
+
+@media(max-width:590px) {
+
+    *{
+        overflow-x:hidden;
+        width:auto;
+    }
+
+    .showcase h1 {
+        font-size: 1.3rem;
+        max-width: 100%;
+    }
+
+    .social-media {
+        margin: 0;
+        padding: 0;
+    }
+
+ }
